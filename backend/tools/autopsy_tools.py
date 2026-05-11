@@ -1,13 +1,11 @@
-from langchain.tools import Tool
-
 from services.rag_service import (
     retrieve_context
 )
 
-
 # -----------------------------------
 # TOOL FUNCTION
 # -----------------------------------
+
 def analyze_autopsy_report(
     query
 ):
@@ -21,8 +19,3 @@ def analyze_autopsy_report(
     )
 
     return context
-
-
-# -----------------------------------
-# LANGCHAIN TOOL
-# -----------------------------------

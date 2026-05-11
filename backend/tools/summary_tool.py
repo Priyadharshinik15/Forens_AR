@@ -18,8 +18,4 @@ def summarize_case(
         context_list
     )
 
-    return {
-        "query": query,
-        "summary_context": context,
-        "sources": context_list
-    }
+    return context

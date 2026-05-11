@@ -6,6 +6,7 @@ import {
   Bot,
   Box,
   Sparkles,
+  Mic,
 } from "lucide-react";
 
 import {
@@ -42,6 +43,11 @@ function Sidebar() {
       icon: <Camera size={20} />,
       path: "/cctv-analysis",
     },
+    {
+    name: "Voice Analysis",
+    icon: <Mic size={20} />,
+    path: "/voice-analysis",
+  },
 
     {
       name: "Crime Scene 3D",

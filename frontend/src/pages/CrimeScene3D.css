@@ -1,633 +1,302 @@
 /* =========================================
-   MAIN WRAPPER
+   MAIN APP BACKGROUND (FORENSIC CINEMATIC STYLE)
 ========================================= */
 
-.crime-upload-screen{
-  position:relative;
-  overflow:hidden;
-
-  min-height:80vh;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
-  padding:40px;
-
-  color:white;
+.crime-app {
+  position: relative;
+  min-height: 100vh;
+  color: #0f172a;
+  background: linear-gradient(135deg, #f7f4ef, #f3efe9, #ece6dc);
+  overflow: hidden;
+  perspective: 1200px; /* for depth movement */
 }
 
-/* GRID TEXTURE */
-.crime-upload-screen::before{
-  content:"";
+/* GRID TEXTURE (SUBTLE PAPER MOVEMENT) */
+.crime-app::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-  position:absolute;
-  inset:0;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(255,255,255,0.04) 1px,
-      transparent 1px
-    );
-
-  background-size:24px 24px;
-
-  opacity:0.08;
-
-  pointer-events:none;
-}
-
-/* AMBIENT GLOW */
-.crime-upload-screen::after{
-  content:"";
-
-  position:absolute;
-
-  top:-200px;
-  left:-200px;
-
-  width:500px;
-  height:500px;
-
-  border-radius:999px;
-
-  background:rgba(34,211,238,0.12);
-
-  filter:blur(120px);
-
-  animation:pulseGlow 5s ease-in-out infinite;
-}
-
-/* =========================================
-   LOGO
-========================================= */
-
-.crime-logo{
-  position:relative;
-  z-index:10;
-
-  text-align:center;
-
-  margin-bottom:50px;
-}
-
-.crime-logo h1{
-  font-size:58px;
-  font-weight:900;
-
-  letter-spacing:-2px;
-
-  background:linear-gradient(
-    to right,
-    #22d3ee,
-    #38bdf8
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.05) 1px,
+    transparent 1px
   );
 
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  background-size: 24px 24px;
+
+  opacity: 0.05;
+  pointer-events: none;
+
+  animation: paperDrift 18s linear infinite;
 }
 
-.crime-logo p{
-  margin-top:16px;
+/* AMBIENT RED GLOW (SLOW FLOAT) */
+.crime-app::after {
+  content: "";
 
-  color:#94a3b8;
+  position: absolute;
+  top: -200px;
+  left: -200px;
 
-  font-size:18px;
+  width: 600px;
+  height: 600px;
 
-  line-height:32px;
+  background: rgba(127, 29, 29, 0.12);
 
-  max-width:700px;
+  filter: blur(120px);
+
+  border-radius: 50%;
+
+  animation: pulseGlow 8s ease-in-out infinite;
 }
 
 /* =========================================
-   MAIN BOX
+   RED STRING CONNECTION SYSTEM
 ========================================= */
 
-.crime-box{
-  position:relative;
-  z-index:10;
+.evidence-connection {
+  position: absolute;
+  height: 2px;
 
-  width:560px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(127, 29, 29, 0.9),
+    transparent
+  );
 
-  overflow:hidden;
+  box-shadow: 0 0 14px rgba(127, 29, 29, 0.5);
 
-  border-radius:36px;
+  transform-origin: left center;
 
-  background:rgba(255,255,255,0.04);
-
-  backdrop-filter:blur(24px);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  padding:42px;
-
-  box-shadow:
-    0 20px 100px rgba(0,0,0,0.35);
+  animation: drawThread 0.8s ease-out forwards, threadVibrate 2.5s infinite ease-in-out;
 }
 
-/* INNER GLOW */
-.crime-box::before{
-  content:"";
+/* PULSING NODE */
+.evidence-node {
+  width: 10px;
+  height: 10px;
 
-  position:absolute;
+  border-radius: 50%;
 
-  top:-100px;
-  right:-100px;
+  background: #7f1d1d;
 
-  width:250px;
-  height:250px;
+  box-shadow: 0 0 18px rgba(127, 29, 29, 0.6);
 
-  border-radius:999px;
+  animation: nodePulse 1.8s infinite ease-in-out;
+}
 
-  background:rgba(34,211,238,0.14);
-
-  filter:blur(90px);
+/* LINKED STATE */
+.evidence-linked {
+  border-color: rgba(127, 29, 29, 0.4) !important;
+  background: rgba(127, 29, 29, 0.06) !important;
+  transform: translateY(-3px);
+  transition: all 0.4s ease;
 }
 
 /* =========================================
-   DROP ZONE
+   HEADER (IMMERSIVE DEPTH SHIFT)
 ========================================= */
 
-.drop-zone{
-  position:relative;
-  overflow:hidden;
+.app-header {
+  position: relative;
+  z-index: 10;
 
-  border:2px dashed rgba(34,211,238,0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 
-  border-radius:30px;
+  margin-bottom: 40px;
 
-  padding:70px 24px;
-
-  text-align:center;
-
-  cursor:pointer;
-
-  transition:all .35s ease;
-
-  background:rgba(255,255,255,0.03);
+  transform: translateZ(40px);
 }
 
-.drop-zone:hover{
-  transform:translateY(-4px);
-
-  border-color:rgba(34,211,238,0.6);
-
-  background:rgba(34,211,238,0.06);
-
-  box-shadow:
-    0 0 40px rgba(34,211,238,0.12);
+.app-header h2 {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: #0f172a;
 }
 
-.drop-zone h3{
-  font-size:28px;
-  font-weight:800;
-
-  color:white;
-
-  margin-top:20px;
-}
-
-.drop-zone p{
-  margin-top:14px;
-
-  color:#94a3b8;
-
-  font-size:15px;
-
-  line-height:28px;
+.app-header p {
+  margin-top: 12px;
+  font-size: 18px;
+  color: #64748b;
+  max-width: 700px;
+  line-height: 32px;
 }
 
 /* =========================================
-   DIVIDER
+   MAIN GRID LAYOUT
 ========================================= */
 
-.divider{
-  position:relative;
+.app-body {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 28px;
 
-  text-align:center;
-
-  margin:32px 0;
-
-  color:#64748b;
-
-  font-size:13px;
-
-  letter-spacing:3px;
-}
-
-.divider::before,
-.divider::after{
-  content:"";
-
-  position:absolute;
-
-  top:50%;
-
-  width:40%;
-
-  height:1px;
-
-  background:rgba(255,255,255,0.08);
-}
-
-.divider::before{
-  left:0;
-}
-
-.divider::after{
-  right:0;
+  transition: transform 0.2s ease;
 }
 
 /* =========================================
-   SAMPLE BUTTON
+   CANVAS AREA (DEPTH SHIFT ON MOUSE)
 ========================================= */
 
-.sample-btn{
-  width:100%;
+.canvas-area {
+  position: relative;
 
-  height:64px;
+  border-radius: 42px;
 
-  border:none;
+  background: rgba(255, 255, 255, 0.35);
 
-  border-radius:22px;
+  backdrop-filter: blur(24px);
 
-  background:
-    linear-gradient(
-      to right,
-      #22d3ee,
-      #0ea5e9
-    );
+  border: 1px solid rgba(0, 0, 0, 0.05);
 
-  color:black;
+  padding: 24px;
 
-  font-size:16px;
-  font-weight:800;
+  box-shadow: 0 20px 100px rgba(15, 23, 42, 0.12);
 
-  cursor:pointer;
+  transform-style: preserve-3d;
 
-  transition:all .35s ease;
-
-  box-shadow:
-    0 10px 40px rgba(34,211,238,0.22);
+  transition: transform 0.2s ease;
 }
 
-.sample-btn:hover{
-  transform:scale(1.02);
+/* GRID DEPTH */
+.canvas-area::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-  box-shadow:
-    0 15px 60px rgba(34,211,238,0.32);
-}
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.04) 1px,
+    transparent 1px
+  );
 
-/* =========================================
-   LOADING SCREEN
-========================================= */
+  background-size: 22px 22px;
 
-.loading-screen{
-  position:relative;
+  opacity: 0.05;
+  pointer-events: none;
 
-  min-height:80vh;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
-  padding:40px;
-
-  color:white;
-}
-
-.loading-screen h2{
-  font-size:44px;
-  font-weight:900;
-
-  margin-bottom:18px;
-}
-
-.loading-screen p{
-  color:#94a3b8;
+  animation: gridFloat 12s ease-in-out infinite;
 }
 
 /* =========================================
-   PROGRESS BAR
-========================================= */
-
-.progress-bar{
-  width:560px;
-  height:14px;
-
-  margin:34px 0;
-
-  overflow:hidden;
-
-  border-radius:999px;
-
-  background:#111827;
-
-  border:1px solid rgba(255,255,255,0.05);
-}
-
-.progress-fill{
-  height:100%;
-
-  border-radius:999px;
-
-  background:
-    linear-gradient(
-      to right,
-      #22d3ee,
-      #0ea5e9
-    );
-
-  transition:.45s ease;
-
-  box-shadow:
-    0 0 30px rgba(34,211,238,0.4);
-}
-
-/* =========================================
-   LOGS
-========================================= */
-
-.logs{
-  width:560px;
-
-  margin-top:26px;
-
-  border-radius:28px;
-
-  background:rgba(255,255,255,0.04);
-
-  backdrop-filter:blur(24px);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  padding:24px;
-
-  color:#94a3b8;
-
-  font-family:monospace;
-  font-size:14px;
-
-  line-height:30px;
-
-  box-shadow:
-    0 20px 80px rgba(0,0,0,0.3);
-}
-
-/* =========================================
-   APP
-========================================= */
-
-.crime-app{
-  position:relative;
-
-  color:white;
-}
-
-/* =========================================
-   HEADER
-========================================= */
-
-.app-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  gap:30px;
-
-  margin-bottom:30px;
-}
-
-.app-header h2{
-  font-size:42px;
-  font-weight:900;
-
-  letter-spacing:-1px;
-}
-
-.app-header p{
-  margin-top:10px;
-
-  color:#94a3b8;
-
-  line-height:30px;
-}
-
-.app-header button{
-  height:60px;
-
-  padding:0 28px;
-
-  border:none;
-
-  border-radius:20px;
-
-  background:
-    linear-gradient(
-      to right,
-      #22d3ee,
-      #0ea5e9
-    );
-
-  color:black;
-
-  font-weight:800;
-
-  cursor:pointer;
-
-  transition:.35s ease;
-
-  box-shadow:
-    0 10px 40px rgba(34,211,238,0.25);
-}
-
-.app-header button:hover{
-  transform:scale(1.04);
-}
-
-/* =========================================
-   BODY
-========================================= */
-
-.app-body{
-  display:grid;
-
-  grid-template-columns:1fr 360px;
-
-  gap:26px;
-}
-
-/* =========================================
-   CANVAS AREA
-========================================= */
-
-.canvas-area{
-  position:relative;
-  overflow:hidden;
-
-  border-radius:36px;
-
-  background:rgba(255,255,255,0.04);
-
-  backdrop-filter:blur(24px);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  box-shadow:
-    0 20px 100px rgba(0,0,0,0.35);
-}
-
-.canvas-area::before{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(255,255,255,0.03) 1px,
-      transparent 1px
-    );
-
-  background-size:24px 24px;
-
-  pointer-events:none;
-}
-
-.vr-canvas{
-  width:100%;
-  height:750px;
-
-  display:block;
-
-  background:#020617;
-}
-
-/* =========================================
-   SIDEBAR
-========================================= */
-
-.sidebar{
-  display:flex;
-  flex-direction:column;
-
-  gap:24px;
-}
-
-/* =========================================
-   PANEL
-========================================= */
-
-.panel{
-  position:relative;
-  overflow:hidden;
-
-  border-radius:32px;
-
-  background:rgba(255,255,255,0.04);
-
-  backdrop-filter:blur(24px);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  padding:28px;
-
-  box-shadow:
-    0 20px 80px rgba(0,0,0,0.3);
-}
-
-.panel::before{
-  content:"";
-
-  position:absolute;
-
-  top:-80px;
-  right:-80px;
-
-  width:180px;
-  height:180px;
-
-  border-radius:999px;
-
-  background:rgba(34,211,238,0.1);
-
-  filter:blur(80px);
-}
-
-.panel h3{
-  position:relative;
-  z-index:10;
-
-  font-size:28px;
-  font-weight:900;
-
-  margin-bottom:24px;
-}
-
-/* =========================================
-   ITEMS
+   EVIDENCE ITEMS (DETECTIVE CARDS)
 ========================================= */
 
 .evidence-item,
-.timeline-item{
-  position:relative;
-  overflow:hidden;
+.timeline-item {
+  padding: 18px;
 
-  padding:18px;
+  border-radius: 22px;
 
-  border-radius:22px;
+  background: rgba(255, 255, 255, 0.4);
 
-  background:rgba(255,255,255,0.03);
+  border: 1px solid rgba(0,0,0,0.05);
 
-  border:1px solid rgba(255,255,255,0.06);
+  transition: all 0.35s ease;
 
-  margin-bottom:16px;
+  backdrop-filter: blur(20px);
 
-  cursor:pointer;
+  cursor: pointer;
 
-  transition:all .35s ease;
+  position: relative;
 }
 
+/* HOVER DEPTH SHIFT */
 .evidence-item:hover,
-.timeline-item:hover{
-  transform:translateY(-3px);
+.timeline-item:hover {
+  transform: translateY(-6px) scale(1.01);
 
-  border-color:rgba(34,211,238,0.5);
+  border-color: rgba(127, 29, 29, 0.25);
 
-  background:rgba(34,211,238,0.05);
+  background: rgba(127, 29, 29, 0.05);
+
+  box-shadow: 0 15px 40px rgba(127, 29, 29, 0.08);
 }
 
-.evidence-item.active,
-.timeline-item.active{
-  background:rgba(34,211,238,0.08);
+/* =========================================
+   FLOATING DUST PARTICLES
+========================================= */
 
-  border-color:#22d3ee;
+.dust {
+  position: absolute;
 
-  box-shadow:
-    0 0 30px rgba(34,211,238,0.15);
+  width: 2px;
+  height: 2px;
+
+  background: rgba(0,0,0,0.08);
+
+  border-radius: 50%;
+
+  animation: floatDust 12s infinite linear;
 }
 
 /* =========================================
    ANIMATIONS
 ========================================= */
 
-@keyframes pulseGlow{
-  0%{
-    transform:scale(1);
-    opacity:0.6;
+/* THREAD DRAW */
+@keyframes drawThread {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
   }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
 
-  50%{
-    transform:scale(1.1);
-    opacity:1;
-  }
+/* THREAD VIBRATION (SUBTLE ENERGY) */
+@keyframes threadVibrate {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(0.5px); }
+}
 
-  100%{
-    transform:scale(1);
-    opacity:0.6;
+/* NODE PULSE */
+@keyframes nodePulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+/* PAPER DRIFT */
+@keyframes paperDrift {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* GRID FLOAT */
+@keyframes gridFloat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+/* DUST FLOATING */
+@keyframes floatDust {
+  0% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.2;
   }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-40px) translateX(0px);
+    opacity: 0;
+  }
+}
+
+/* AMBIENT GLOW */
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.15); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 0.4; }
 }

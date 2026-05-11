@@ -45,3 +45,27 @@ summary_agent = initialize_agent(
     SUMMARY_SYSTEM_PROMPT
 }
 )
+# -----------------------------------
+# RUN SUMMARY AGENT
+# -----------------------------------
+
+def generate_summary_report():
+
+    query = """
+    Generate a complete forensic investigation report.
+
+    Include:
+    - Case Overview
+    - Cause of Death
+    - Evidence Analysis
+    - Timeline Reconstruction
+    - Suspicious Findings
+    - Risk Assessment
+    - Final Conclusion
+    """
+
+    response = summary_agent.run(
+        query
+    )
+
+    return response

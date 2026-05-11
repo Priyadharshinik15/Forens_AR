@@ -5,8 +5,8 @@ import {
 } from "lucide-react";
 
 function ThreatMeter({
-  threatLevel = 75,
-  status = "HIGH",
+  threatLevel = 90,
+  status = "CRITICAL",
 }) {
 
   const getStatusColor = () => {
@@ -49,348 +49,173 @@ function ThreatMeter({
   const colors = getStatusColor();
 
   return (
-
     <div
       className="
         relative
         overflow-hidden
-
         rounded-[40px]
-
         bg-white/30
         backdrop-blur-2xl
-
         border border-black/5
-
         shadow-[0_20px_80px_rgba(15,23,42,0.08)]
-
-        p-8
-
+        px-8
+        py-12
         flex
         flex-col
         items-center
-        justify-center
-
-        h-[460px]
+        justify-start
+        min-h-[520px]
       "
     >
-
       {/* PAPER TEXTURE */}
-      <div
-        className="
-          absolute inset-0
-
-          opacity-[0.02]
-
-          pointer-events-none
-
-          bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)]
-
-          bg-[length:24px_24px]
-        "
-      />
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)] bg-[length:24px_24px]" />
 
       {/* AMBIENT LIGHT */}
       <div
         className={`
-          absolute
-          top-0
-          right-0
-
-          w-72
-          h-72
-
+          absolute top-0 right-0
+          w-72 h-72
           rounded-full
-
           blur-3xl
-
           ${colors.glow}
         `}
       />
 
-      {/* RED STRING */}
-      <div
-        className="
-          absolute
-
-          top-24
-          right-10
-
-          w-44
-          h-[2px]
-
-          bg-gradient-to-r
-          from-transparent
-          via-red-700
-          to-transparent
-
-          rotate-[18deg]
-
-          opacity-40
-
-          shadow-[0_0_16px_rgba(127,29,29,0.4)]
-
-          animate-pulse
-        "
-      />
-
       {/* HEADER */}
-      <div
-        className="
-          relative z-10
+      <div className="relative z-10 flex flex-col items-center mb-10">
 
-          flex
-          flex-col
-          items-center
-
-          mb-10
-        "
-      >
-
-        {/* BADGE */}
         <div
           className={`
-            inline-flex
-            items-center
-            gap-2
-
-            px-4
-            py-2
-
+            inline-flex items-center gap-2
+            px-4 py-2
             rounded-full
-
             border
-
             text-[11px]
             font-black
-
             tracking-[2px]
-
             mb-6
-
             ${colors.bg}
             ${colors.border}
             ${colors.softText}
           `}
         >
-
           <Sparkles size={12} />
-
           LIVE THREAT ANALYSIS
         </div>
 
-        {/* TITLE */}
         <div className="flex items-center gap-4">
 
           <div
             className={`
               relative
-
-              w-14
-              h-14
-
+              w-14 h-14
               rounded-[20px]
-
-              flex
-              items-center
-              justify-center
-
+              flex items-center justify-center
               border
-
               ${colors.bg}
               ${colors.border}
             `}
           >
-
-            {/* GLOW */}
             <div
               className={`
-                absolute
-                inset-0
-
+                absolute inset-0
                 rounded-[20px]
-
                 blur-xl
-
                 ${colors.glow}
               `}
             />
 
             <ShieldAlert
-              size={26}
-              className={`
-                relative z-10
-
-                ${colors.text}
-              `}
+              size={24}
+              className={`relative z-10 ${colors.text}`}
             />
           </div>
 
-          <h2
-            className="
-              text-3xl
-              font-black
-
-              text-slate-900
-            "
-          >
+          <h2 className="text-2xl font-black text-slate-900 leading-tight">
             Threat Meter
           </h2>
+
         </div>
       </div>
 
       {/* CIRCLE */}
-      <div
-        className="
-          relative
+      <div className="relative mb-10">
 
-          mb-10
-        "
-      >
-
-        {/* OUTER GLOW */}
         <div
           className={`
-            absolute
-            inset-0
-
+            absolute inset-0
             rounded-full
-
             blur-3xl
-
-            opacity-50
-
+            opacity-40
             ${colors.glow}
           `}
         />
 
-        {/* PULSE */}
-        <div
-          className={`
-            absolute
-            inset-0
-
-            rounded-full
-
-            animate-ping
-
-            opacity-10
-
-            ${colors.glow}
-          `}
-        />
-
-        {/* OUTER RING */}
         <div
           className={`
             relative
-
-            w-[240px]
-            h-[240px]
-
+            w-[220px]
+            h-[220px]
             rounded-full
-
-            border-[14px]
-
-            flex
-            items-center
-            justify-center
-
+            border-[12px]
+            flex items-center justify-center
             backdrop-blur-xl
-
-            shadow-[0_0_40px_rgba(15,23,42,0.06)]
-
             ${colors.ring}
           `}
         >
 
-          {/* INNER RING */}
-          <div
-            className="
-              absolute
-
-              w-[190px]
-              h-[190px]
-
-              rounded-full
-
-              border border-black/5
-            "
-          />
-
-          {/* INNER CORE */}
           <div
             className="
               relative
-
-              w-[160px]
-              h-[160px]
-
+              w-[145px]
+              h-[145px]
               rounded-full
-
-              bg-white/50
+              bg-white/60
               backdrop-blur-xl
-
               border border-black/5
-
-              flex
-              flex-col
+              flex flex-col
               items-center
               justify-center
-
               shadow-[0_10px_40px_rgba(15,23,42,0.08)]
             "
           >
 
-            {/* CENTER GLOW */}
             <div
               className={`
-                absolute
-                inset-6
-
+                absolute inset-5
                 rounded-full
-
                 blur-2xl
-
-                opacity-50
-
+                opacity-40
                 ${colors.glow}
               `}
             />
 
-            {/* VALUE */}
             <h1
               className={`
                 relative z-10
-
-                text-7xl
+                text-[48px]
+                leading-none
                 font-black
-
                 tracking-tight
-
                 ${colors.text}
               `}
             >
               {threatLevel}
             </h1>
 
-            {/* LABEL */}
             <p
               className="
                 relative z-10
-
-                text-xs
+                text-[10px]
                 font-bold
-
-                tracking-[3px]
-
+                tracking-[4px]
                 text-slate-500
-
-                mt-3
+                mt-2
               "
             >
               THREAT LEVEL
             </p>
+
           </div>
         </div>
       </div>
@@ -399,75 +224,52 @@ function ThreatMeter({
       <div
         className={`
           relative z-10
-
           inline-flex
           items-center
           gap-3
-
-          px-5
+          px-6
           py-3.5
-
           rounded-full
-
           border
-
           backdrop-blur-xl
-
           text-sm
           font-black
-
           tracking-[1.5px]
-
           uppercase
-
+          mb-8
           ${colors.bg}
           ${colors.border}
           ${colors.text}
         `}
       >
 
-        {/* DOT */}
         <div
           className={`
-            w-2.5
-            h-2.5
-
+            w-2.5 h-2.5
             rounded-full
-
             animate-pulse
-
             ${colors.dot}
           `}
         />
 
-        <AlertTriangle size={16} />
+        <AlertTriangle size={15} />
 
-        <span>
-          {status} Risk Detected
-        </span>
+        <span>{status} Risk Detected</span>
+
       </div>
 
       {/* DESCRIPTION */}
       <p
         className="
           relative z-10
-
           text-slate-500
-
           text-sm
           text-center
-
           leading-7
-
-          mt-7
-
           max-w-[320px]
         "
       >
-        AI forensic intelligence has identified
-        elevated anomaly patterns and suspicious
-        evidence correlations requiring immediate
-        investigative attention.
+        AI forensic intelligence has identified elevated anomaly patterns and suspicious evidence correlations requiring immediate investigative attention.
       </p>
     </div>
   );

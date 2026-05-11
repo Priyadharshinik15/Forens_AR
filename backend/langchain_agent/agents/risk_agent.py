@@ -41,6 +41,9 @@ risk_agent = initialize_agent(
     memory=memory,
 
     verbose=True,
+    max_iterations=3,
+
+    early_stopping_method="generate",
 
     agent_kwargs={
     "system_message":

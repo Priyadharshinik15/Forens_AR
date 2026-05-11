@@ -1,745 +1,621 @@
-import DashboardLayout from "../components/layout/DashboardLayout";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import CCTVUploader from "../components/cctv/CCTVUploader";
 
-import DetectionPanel from "../components/cctv/DetectionPanel";
-
 import {
-  Camera,
-  Sparkles,
-  ShieldAlert,
-  ScanSearch,
+  LayoutDashboard,
+  FolderOpen,
+  Video,
+  Box,
+  Bot,
+  FileText,
+  LogOut,
 } from "lucide-react";
 
-function CCTVAnalysis({
-  detections = [],
-  insights = [],
-}) {
+function CCTVAnalysis() {
+
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   return (
 
-    <DashboardLayout>
+    <div
+      className="
+        relative
+        flex
+        min-h-screen
+        overflow-x-hidden
 
-      {/* MAIN WRAPPER */}
-      <div className="relative overflow-hidden">
+        bg-gradient-to-br
+        from-[#f7f4ef]
+        via-[#f2eee8]
+        to-[#ebe5dc]
 
-        {/* PAPER TEXTURE */}
-        <div
-          className="
-            absolute inset-0
+        text-slate-900
+      "
+    >
 
-            opacity-[0.02]
+      {/* ================================= */}
+      {/* CINEMATIC LIGHTING */}
+      {/* ================================= */}
 
-            pointer-events-none
+      <div
+        className="
+          absolute
+          -top-32
+          -left-32
 
-            bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)]
+          w-[800px]
+          h-[800px]
 
-            bg-[length:24px_24px]
-          "
-        />
+          rounded-full
 
-        {/* AMBIENT LIGHTS */}
-        <div
-          className="
-            absolute
-            top-0
-            left-0
+          bg-white/50
 
-            w-[500px]
-            h-[500px]
+          blur-3xl
 
-            rounded-full
+          opacity-90
 
-            bg-red-500/10
+          animate-pulse
 
-            blur-3xl
+          pointer-events-none
+        "
+      />
 
-            animate-pulse
-          "
-        />
+      <div
+        className="
+          absolute
+          bottom-0
+          right-0
 
-        <div
-          className="
-            absolute
-            bottom-0
-            right-0
+          w-[700px]
+          h-[700px]
 
-            w-[500px]
-            h-[500px]
+          rounded-full
 
-            rounded-full
+          bg-red-200/20
 
-            bg-red-900/10
+          blur-3xl
 
-            blur-3xl
+          opacity-80
 
-            animate-pulse
-          "
-        />
+          animate-pulse
 
-        <div className="relative z-10">
+          pointer-events-none
+        "
+      />
 
-          {/* PAGE HEADER */}
-          <div
-            className="
-              flex
-              items-start
-              justify-between
+      {/* ================================= */}
+      {/* PAPER TEXTURE */}
+      {/* ================================= */}
 
-              gap-8
+      <div
+        className="
+          absolute inset-0
 
-              mb-10
-            "
-          >
+          opacity-[0.025]
 
-            {/* LEFT */}
+          pointer-events-none
+
+          bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)]
+
+          bg-[length:26px_26px]
+        "
+      />
+
+      {/* ================================= */}
+      {/* FLOATING DUST */}
+      {/* ================================= */}
+
+      <div className="absolute top-24 left-40 w-2 h-2 rounded-full bg-black/5 blur-[1px] animate-pulse" />
+
+      <div className="absolute top-72 right-44 w-1 h-1 rounded-full bg-red-900/15 blur-[1px] animate-ping" />
+
+      <div className="absolute bottom-32 left-1/3 w-2 h-2 rounded-full bg-black/5 blur-[1px] animate-bounce" />
+
+      <div className="absolute bottom-20 right-1/4 w-1 h-1 rounded-full bg-red-800/20 blur-[1px] animate-pulse" />
+
+      {/* ================================= */}
+      {/* RED STRINGS */}
+      {/* ================================= */}
+
+      <div
+        className="
+          absolute
+          top-[180px]
+          left-[220px]
+
+          w-[320px]
+          h-[2px]
+
+          bg-gradient-to-r
+          from-red-950
+          via-red-700
+          to-red-950
+
+          rotate-[11deg]
+
+          shadow-[0_0_18px_rgba(127,29,29,0.55)]
+
+          animate-pulse
+
+          pointer-events-none
+        "
+      />
+
+      <div
+        className="
+          absolute
+          top-[320px]
+          left-[500px]
+
+          w-[260px]
+          h-[2px]
+
+          bg-gradient-to-r
+          from-red-950
+          via-red-600
+          to-red-950
+
+          -rotate-[14deg]
+
+          shadow-[0_0_18px_rgba(127,29,29,0.55)]
+
+          animate-pulse
+
+          pointer-events-none
+        "
+      />
+
+      <div
+        className="
+          absolute
+          top-[500px]
+          left-[340px]
+
+          w-[300px]
+          h-[2px]
+
+          bg-gradient-to-r
+          from-red-950
+          via-red-500
+          to-red-950
+
+          rotate-[7deg]
+
+          shadow-[0_0_18px_rgba(127,29,29,0.55)]
+
+          animate-pulse
+
+          pointer-events-none
+        "
+      />
+
+      {/* STRING NODES */}
+
+      <div
+        className="
+          absolute
+          top-[172px]
+          left-[214px]
+
+          w-4
+          h-4
+
+          rounded-full
+
+          bg-red-900
+
+          shadow-[0_0_20px_rgba(127,29,29,0.75)]
+
+          animate-ping
+        "
+      />
+
+      <div
+        className="
+          absolute
+          top-[312px]
+          left-[748px]
+
+          w-4
+          h-4
+
+          rounded-full
+
+          bg-red-800
+
+          shadow-[0_0_20px_rgba(127,29,29,0.75)]
+
+          animate-pulse
+        "
+      />
+
+      <div
+        className="
+          absolute
+          top-[492px]
+          left-[628px]
+
+          w-4
+          h-4
+
+          rounded-full
+
+          bg-red-700
+
+          shadow-[0_0_20px_rgba(127,29,29,0.75)]
+
+          animate-ping
+        "
+      />
+
+      {/* ================================= */}
+      {/* SIDEBAR */}
+      {/* ================================= */}
+
+      <aside
+        className="
+          relative
+          z-20
+
+          hidden
+          md:flex
+
+          w-64
+
+          flex-col
+
+          bg-white/25
+          backdrop-blur-2xl
+
+          border-r border-black/5
+        "
+      >
+
+        {/* LOGO */}
+
+        <div className="p-6 border-b border-black/5">
+
+          <div className="flex items-center gap-4">
+
+            <div
+              className="
+                w-14
+                h-14
+
+                rounded-3xl
+
+                bg-red-100
+
+                flex
+                items-center
+                justify-center
+
+                shadow-lg
+              "
+            >
+              <Box
+                className="text-red-900"
+                size={26}
+              />
+            </div>
+
             <div>
 
-              {/* BADGE */}
-              <div
+              <h1
                 className="
-                  inline-flex
-                  items-center
-                  gap-2
-
-                  px-4
-                  py-2
-
-                  rounded-full
-
-                  bg-red-900/5
-                  border border-red-900/10
-
-                  text-red-800
-                  text-[11px]
+                  text-2xl
                   font-black
+                  tracking-[0.15em]
 
-                  tracking-[2px]
-
-                  mb-6
+                  text-slate-900
                 "
               >
+                NEXUS
+              </h1>
 
-                <Sparkles size={12} />
+              <p
+                className="
+                  text-xs
+                  tracking-[0.3em]
+                  uppercase
 
-                AI SURVEILLANCE ANALYSIS
-              </div>
+                  text-red-700
+                "
+              >
+                TRACE SYSTEM
+              </p>
 
-              {/* TOP */}
-              <div className="flex items-center gap-5">
-
-                {/* ICON */}
-                <div
-                  className="
-                    relative
-
-                    w-20
-                    h-20
-
-                    rounded-[30px]
-
-                    bg-red-900/5
-
-                    border border-red-900/10
-
-                    flex
-                    items-center
-                    justify-center
-
-                    shadow-[0_0_40px_rgba(127,29,29,0.12)]
-                  "
-                >
-
-                  {/* GLOW */}
-                  <div
-                    className="
-                      absolute
-                      inset-0
-
-                      rounded-[30px]
-
-                      bg-red-500/10
-
-                      blur-xl
-                    "
-                  />
-
-                  <Camera
-                    size={34}
-                    className="
-                      relative z-10
-
-                      text-red-800
-                    "
-                  />
-                </div>
-
-                {/* TITLE */}
-                <div>
-
-                  <h1
-                    className="
-                      text-5xl
-                      font-black
-
-                      text-slate-900
-
-                      tracking-tight
-                    "
-                  >
-                    CCTV Analysis Center
-                  </h1>
-
-                  <p
-                    className="
-                      text-slate-500
-
-                      mt-3
-
-                      text-lg
-
-                      leading-8
-
-                      max-w-3xl
-                    "
-                  >
-                    AI-powered surveillance footage
-                    analysis, anomaly detection,
-                    and forensic intelligence tracking.
-                  </p>
-                </div>
-              </div>
             </div>
 
-            {/* STATUS */}
-            <div
-              className="
-                inline-flex
+          </div>
+
+        </div>
+
+        {/* NAVIGATION */}
+
+        <nav className="flex-1 p-4 space-y-2">
+
+          {[
+            ["/", "Dashboard", LayoutDashboard],
+            ["/cases", "Cases", FolderOpen],
+            ["/evidence", "Evidence Vault", Box],
+            ["/cctv-analysis", "CCTV Analysis", Video],
+            ["/crime-scene-3d", "Crime Scene 3D", Box],
+            ["/ai-agent", "AI Agent", Bot],
+            ["/reports", "Reports", FileText],
+          ].map(([path, label, Icon]) => (
+
+            <Link
+              key={path}
+              to={path}
+              className={`
+                group
+
+                relative
+
+                flex
                 items-center
-                gap-3
+                gap-4
 
-                px-6
-                py-4
+                overflow-hidden
 
-                rounded-[24px]
+                px-4
+                py-3
 
-                bg-emerald-500/10
+                rounded-2xl
 
-                border border-emerald-500/20
+                transition-all
+                duration-500
 
-                text-emerald-700
+                ${
+                  isActive(path)
+                    ? `
+                      bg-white/70
 
-                font-bold
+                      border border-white/40
 
-                shadow-[0_10px_35px_rgba(16,185,129,0.08)]
-              "
+                      shadow-lg
+
+                      text-red-900
+                    `
+                    : `
+                      text-slate-600
+
+                      hover:bg-white/40
+
+                      hover:text-slate-900
+                    `
+                }
+              `}
             >
+
+              {/* SHINE EFFECT */}
 
               <div
                 className="
-                  w-2.5
-                  h-2.5
+                  absolute
+                  inset-0
 
-                  rounded-full
+                  translate-x-[-120%]
 
-                  bg-emerald-500
+                  group-hover:translate-x-[120%]
 
-                  animate-pulse
+                  transition-transform
+                  duration-1000
+
+                  bg-gradient-to-r
+                  from-transparent
+                  via-white/40
+                  to-transparent
+
+                  skew-x-12
                 "
               />
 
-              LIVE AI DETECTION ACTIVE
-            </div>
-          </div>
+              <Icon size={20} className="relative z-10" />
 
-          {/* TOP INFO CARDS */}
-          <div
+              <span className="relative z-10 font-medium tracking-wide">
+                {label}
+              </span>
+
+            </Link>
+
+          ))}
+
+        </nav>
+
+        {/* FOOTER */}
+
+        <div className="p-4 border-t border-black/5">
+
+          <button
             className="
-              grid
-              grid-cols-3
+              group
 
-              gap-6
+              relative
 
-              mb-10
+              overflow-hidden
+
+              flex
+              items-center
+              gap-3
+
+              px-4
+              py-3
+
+              rounded-2xl
+
+              text-slate-600
+
+              hover:text-red-900
+              hover:bg-white/40
+
+              transition-all
+              duration-500
             "
           >
 
-            {/* CARD */}
             <div
               className="
-                relative
-                overflow-hidden
+                absolute
+                inset-0
 
-                rounded-[32px]
+                translate-x-[-120%]
 
-                bg-white/30
-                backdrop-blur-2xl
+                group-hover:translate-x-[120%]
 
-                border border-black/5
+                transition-transform
+                duration-1000
 
-                p-6
+                bg-gradient-to-r
+                from-transparent
+                via-white/40
+                to-transparent
 
-                shadow-[0_10px_40px_rgba(15,23,42,0.06)]
+                skew-x-12
               "
-            >
+            />
 
-              <div
-                className="
-                  absolute
-                  top-0
-                  right-0
+            <LogOut size={20} className="relative z-10" />
 
-                  w-32
-                  h-32
+            <span className="relative z-10">
+              Logout
+            </span>
 
-                  rounded-full
+          </button>
 
-                  bg-red-500/10
-
-                  blur-3xl
-                "
-              />
-
-              <div className="relative z-10">
-
-                <div className="flex items-center gap-3 mb-5">
-
-                  <Camera
-                    size={22}
-                    className="text-red-700"
-                  />
-
-                  <p
-                    className="
-                      text-sm
-                      font-bold
-
-                      text-slate-500
-                    "
-                  >
-                    DETECTIONS
-                  </p>
-                </div>
-
-                <h2
-                  className="
-                    text-5xl
-                    font-black
-
-                    text-slate-900
-                  "
-                >
-                  {detections.length}
-                </h2>
-              </div>
-            </div>
-
-            {/* ANOMALIES */}
-            <div
-              className="
-                relative
-                overflow-hidden
-
-                rounded-[32px]
-
-                bg-white/30
-                backdrop-blur-2xl
-
-                border border-black/5
-
-                p-6
-
-                shadow-[0_10px_40px_rgba(15,23,42,0.06)]
-              "
-            >
-
-              <div
-                className="
-                  absolute
-                  top-0
-                  right-0
-
-                  w-32
-                  h-32
-
-                  rounded-full
-
-                  bg-amber-500/10
-
-                  blur-3xl
-                "
-              />
-
-              <div className="relative z-10">
-
-                <div className="flex items-center gap-3 mb-5">
-
-                  <ShieldAlert
-                    size={22}
-                    className="text-amber-600"
-                  />
-
-                  <p
-                    className="
-                      text-sm
-                      font-bold
-
-                      text-slate-500
-                    "
-                  >
-                    ANOMALIES
-                  </p>
-                </div>
-
-                <h2
-                  className="
-                    text-5xl
-                    font-black
-
-                    text-slate-900
-                  "
-                >
-                  {insights.length}
-                </h2>
-              </div>
-            </div>
-
-            {/* AI STATUS */}
-            <div
-              className="
-                relative
-                overflow-hidden
-
-                rounded-[32px]
-
-                bg-white/30
-                backdrop-blur-2xl
-
-                border border-black/5
-
-                p-6
-
-                shadow-[0_10px_40px_rgba(15,23,42,0.06)]
-              "
-            >
-
-              <div
-                className="
-                  absolute
-                  top-0
-                  right-0
-
-                  w-32
-                  h-32
-
-                  rounded-full
-
-                  bg-emerald-500/10
-
-                  blur-3xl
-                "
-              />
-
-              <div className="relative z-10">
-
-                <div className="flex items-center gap-3 mb-5">
-
-                  <ScanSearch
-                    size={22}
-                    className="text-emerald-600"
-                  />
-
-                  <p
-                    className="
-                      text-sm
-                      font-bold
-
-                      text-slate-500
-                    "
-                  >
-                    AI ENGINE
-                  </p>
-                </div>
-
-                <h2
-                  className="
-                    text-2xl
-                    font-black
-
-                    text-slate-900
-                  "
-                >
-                  REAL-TIME
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          {/* GRID */}
-          <div className="grid grid-cols-12 gap-7">
-
-            {/* LEFT */}
-            <div className="col-span-5">
-
-              <div
-                className="
-                  relative
-                  overflow-hidden
-
-                  rounded-[40px]
-
-                  bg-white/30
-                  backdrop-blur-2xl
-
-                  border border-black/5
-
-                  p-2
-
-                  shadow-[0_20px_80px_rgba(15,23,42,0.08)]
-                "
-              >
-
-                {/* GLOW */}
-                <div
-                  className="
-                    absolute
-                    top-0
-                    right-0
-
-                    w-52
-                    h-52
-
-                    rounded-full
-
-                    bg-red-500/10
-
-                    blur-3xl
-                  "
-                />
-
-                <div className="relative z-10">
-
-                  <CCTVUploader />
-
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT */}
-            <div className="col-span-7">
-
-              <div
-                className="
-                  relative
-                  overflow-hidden
-
-                  rounded-[40px]
-
-                  bg-white/30
-                  backdrop-blur-2xl
-
-                  border border-black/5
-
-                  p-2
-
-                  shadow-[0_20px_80px_rgba(15,23,42,0.08)]
-                "
-              >
-
-                {/* GLOW */}
-                <div
-                  className="
-                    absolute
-                    top-0
-                    right-0
-
-                    w-52
-                    h-52
-
-                    rounded-full
-
-                    bg-red-500/10
-
-                    blur-3xl
-                  "
-                />
-
-                <div className="relative z-10">
-
-                  <DetectionPanel
-                    detections={detections}
-                  />
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* BOTTOM SECTION */}
-          {insights.length > 0 && (
-
-            <div
-              className="
-                relative
-                overflow-hidden
-
-                mt-10
-
-                rounded-[40px]
-
-                bg-white/30
-                backdrop-blur-2xl
-
-                border border-black/5
-
-                p-8
-
-                shadow-[0_20px_80px_rgba(15,23,42,0.08)]
-              "
-            >
-
-              {/* GLOW */}
-              <div
-                className="
-                  absolute
-                  top-0
-                  right-0
-
-                  w-72
-                  h-72
-
-                  rounded-full
-
-                  bg-red-500/10
-
-                  blur-3xl
-                "
-              />
-
-              <div className="relative z-10">
-
-                {/* HEADER */}
-                <div className="mb-10">
-
-                  <div className="flex items-center gap-4 mb-5">
-
-                    <ShieldAlert
-                      size={26}
-                      className="text-red-700"
-                    />
-
-                    <h2
-                      className="
-                        text-4xl
-                        font-black
-
-                        text-slate-900
-                      "
-                    >
-                      AI Surveillance Insights
-                    </h2>
-                  </div>
-
-                  <p
-                    className="
-                      text-slate-500
-
-                      text-lg
-
-                      leading-8
-                    "
-                  >
-                    Real-time forensic intelligence
-                    generated from surveillance
-                    analysis and anomaly detection.
-                  </p>
-                </div>
-
-                {/* INSIGHT CARDS */}
-                <div className="grid grid-cols-3 gap-6">
-
-                  {insights.map(
-                    (item, index) => (
-
-                      <div
-                        key={index}
-                        className="
-                          relative
-                          overflow-hidden
-
-                          rounded-[30px]
-
-                          bg-white/40
-                          backdrop-blur-xl
-
-                          border border-black/5
-
-                          p-7
-
-                          transition-all duration-500
-
-                          hover:-translate-y-1
-                          hover:border-red-900/10
-                        "
-                      >
-
-                        {/* MINI GLOW */}
-                        <div
-                          className="
-                            absolute
-                            top-0
-                            right-0
-
-                            w-32
-                            h-32
-
-                            rounded-full
-
-                            bg-red-500/10
-
-                            blur-3xl
-                          "
-                        />
-
-                        <div className="relative z-10">
-
-                          <h3
-                            className="
-                              text-xl
-                              font-black
-
-                              text-slate-900
-
-                              mb-4
-                            "
-                          >
-                            {item.title}
-                          </h3>
-
-                          <p
-                            className="
-                              text-slate-600
-
-                              text-sm
-
-                              leading-8
-                            "
-                          >
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
-                    )
-                  )}
-
-                </div>
-              </div>
-            </div>
-          )}
         </div>
-      </div>
 
-    </DashboardLayout>
+      </aside>
+
+      {/* ================================= */}
+      {/* MAIN */}
+      {/* ================================= */}
+
+      <main className="relative z-10 flex-1 flex flex-col">
+
+        {/* HEADER */}
+
+        <header
+          className="
+            relative
+
+            overflow-hidden
+
+            backdrop-blur-2xl
+
+            border-b border-black/5
+
+            bg-white/20
+
+            px-10
+            py-7
+          "
+        >
+
+          {/* SHINE */}
+
+          <div
+            className="
+              absolute
+              inset-0
+
+              bg-gradient-to-r
+              from-transparent
+              via-white/20
+              to-transparent
+
+              translate-x-[-100%]
+
+              animate-[shine_5s_linear_infinite]
+            "
+          />
+
+          <div className="relative z-10">
+
+            <h2
+              className="
+                text-5xl
+
+                font-black
+
+                tracking-[0.12em]
+
+                uppercase
+
+                text-slate-900
+
+                drop-shadow-sm
+              "
+            >
+              CCTV ANALYSIS
+            </h2>
+
+            <p
+              className="
+                mt-3
+
+                text-sm
+
+                tracking-[0.25em]
+
+                uppercase
+
+                text-red-700
+              "
+            >
+              AI POWERED FORENSIC INVESTIGATION BOARD
+            </p>
+
+          </div>
+
+        </header>
+
+        {/* PAGE */}
+
+        <div className="relative flex-1 overflow-y-auto px-8 pt-8 pb-40">
+
+          <div
+            className="
+              absolute inset-0
+
+              bg-gradient-to-br
+              from-white/10
+              via-transparent
+              to-red-100/5
+
+              pointer-events-none
+            "
+          />
+
+          <div className="relative z-10">
+            <CCTVUploader />
+          </div>
+
+        </div>
+
+      </main>
+
+      {/* ================================= */}
+      {/* SHINE ANIMATION */}
+      {/* ================================= */}
+
+      <style>{`
+        @keyframes shine {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+      `}</style>
+
+    </div>
   );
 }
 

@@ -23,37 +23,37 @@ const INITIAL_LAYERS = {
 
 // ─── TIME OF DAY ──────────────────────────────────────────────────────────
 const TOD = [
-  { label: "Night",  desc: "Night — low visibility",  bg: "#01040d", grid: "rgba(80,120,255,0.05)",  amb: "#0f1a2e" },
-  { label: "Day",    desc: "Daytime — natural light", bg: "#060a14", grid: "rgba(255,255,255,0.05)", amb: "#0c1a2e" },
-  { label: "Sunset", desc: "Sunset — warm tone",      bg: "#100a04", grid: "rgba(255,160,60,0.06)",  amb: "#2a1008" },
-  { label: "Dusk",   desc: "Dusk — blue hour",        bg: "#030809", grid: "rgba(60,180,255,0.05)",  amb: "#060f18" }
+  { label: "Night",  desc: "Night — low visibility",  bg: "#1a1a2e", grid: "rgba(127,29,29,0.08)",  amb: "#0f1a2e" },
+  { label: "Day",    desc: "Daytime — natural light", bg: "#f0ece4", grid: "rgba(0,0,0,0.06)",       amb: "#e8e0d0" },
+  { label: "Sunset", desc: "Sunset — warm tone",      bg: "#f5e6d0", grid: "rgba(180,80,20,0.07)",   amb: "#e8d0b0" },
+  { label: "Dusk",   desc: "Dusk — blue hour",        bg: "#dce8f0", grid: "rgba(60,100,160,0.07)",  amb: "#c8d8e8" }
 ];
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────
 const STATUS_COL = {
-  "Collected":      "#6bcb77",
-  "Under Analysis": "#ffd93d",
-  "Secured":        "#4a9eff",
-  "Recorded":       "#b39ddb",
-  "Pending Review": "#888",
-  "Photographed":   "#ff9f43"
+  "Collected":      "#15803d",
+  "Under Analysis": "#b45309",
+  "Secured":        "#1d4ed8",
+  "Recorded":       "#6d28d9",
+  "Pending Review": "#64748b",
+  "Photographed":   "#c2410c"
 };
 const STATUS_BG = {
-  "Collected":      "rgba(107,203,119,0.15)",
-  "Under Analysis": "rgba(255,217,61,0.15)",
-  "Secured":        "rgba(74,158,255,0.15)",
-  "Recorded":       "rgba(179,157,219,0.15)",
-  "Pending Review": "rgba(136,136,136,0.1)",
-  "Photographed":   "rgba(255,159,67,0.15)"
+  "Collected":      "rgba(21,128,61,0.1)",
+  "Under Analysis": "rgba(180,83,9,0.1)",
+  "Secured":        "rgba(29,78,216,0.1)",
+  "Recorded":       "rgba(109,40,217,0.1)",
+  "Pending Review": "rgba(100,116,139,0.08)",
+  "Photographed":   "rgba(194,65,12,0.1)"
 };
 const RCOLORS = {
-  blue:   { wall: "#0d1e3a", floor: "#081428", border: "#378ADD" },
-  teal:   { wall: "#072a20", floor: "#051a14", border: "#1abc9c" },
-  green:  { wall: "#0a250a", floor: "#061506", border: "#6bcb77" },
-  red:    { wall: "#280a0a", floor: "#180505", border: "#ff6b6b" },
-  amber:  { wall: "#261505", floor: "#160d03", border: "#ffd93d" },
-  purple: { wall: "#160d28", floor: "#0d0818", border: "#b39ddb" },
-  gray:   { wall: "#141820", floor: "#0c1018", border: "#8fa3b8"  }
+  blue:   { wall: "#c8d8f0", floor: "#dce8f8", border: "#2563eb" },
+  teal:   { wall: "#b0e0d8", floor: "#ccf0e8", border: "#0d9488" },
+  green:  { wall: "#bbddb8", floor: "#d0f0cc", border: "#16a34a" },
+  red:    { wall: "#f0c0c0", floor: "#fad4d4", border: "#dc2626" },
+  amber:  { wall: "#f0d8a0", floor: "#f8e8c0", border: "#d97706" },
+  purple: { wall: "#d8c0f0", floor: "#ecd8fc", border: "#7c3aed" },
+  gray:   { wall: "#d0d4dc", floor: "#e0e4ec", border: "#64748b" }
 };
 
 function hexToRgba(hex, alpha) {
@@ -262,10 +262,10 @@ function UploadScreen({ onLoad, onError }) {
   };
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem", gap: "2rem" }}>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem", gap: "2rem", position:"relative", zIndex:1 }}>
       <div style={{ textAlign: "center" }}>
-        <h1 style={{ fontFamily: "var(--mono)", fontSize: "clamp(18px,3.5vw,32px)", color: "var(--accent)", letterSpacing: "3px", textTransform: "uppercase" }}>■ VR Crime Scene Builder</h1>
-        <p style={{ fontSize: "12px", color: "var(--text3)", fontFamily: "var(--mono)", marginTop: "6px", letterSpacing: "1px" }}>AI-powered forensic visualisation from any incident report</p>
+        <h1 style={{ fontFamily: "var(--display)", fontSize: "clamp(22px,4vw,42px)", color: "var(--text)", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight:900, lineHeight:1 }}>VR Crime Scene Builder</h1>
+        <p style={{ fontSize: "11px", color: "var(--accent)", fontFamily: "var(--mono)", marginTop: "10px", letterSpacing: "0.22em", textTransform:"uppercase", fontWeight:700 }}>AI-powered forensic visualisation from any incident report</p>
       </div>
 
       <div className="corner-box" style={{ maxWidth: "540px", width: "100%" }}>
@@ -277,7 +277,7 @@ function UploadScreen({ onLoad, onError }) {
             display: "block", border: `1px dashed ${dragging ? "var(--accent)" : "var(--border2)"}`,
             borderRadius: "4px", padding: "2.5rem 1rem", textAlign: "center", cursor: "pointer",
             transition: "border-color 0.2s, background 0.2s", marginBottom: "1rem",
-            background: dragging ? "rgba(99,179,237,0.05)" : "transparent"
+            background: dragging ? "rgba(127,29,29,0.04)" : "transparent"
           }}>
           <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.5" stroke="var(--text3)" strokeLinecap="round" strokeLinejoin="round" style={{ width: 40, height: 40, margin: "0 auto 12px", display: "block" }}>
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9,15 12,12 15,15"/>
@@ -305,7 +305,7 @@ function UploadScreen({ onLoad, onError }) {
               color: "var(--text)", cursor: "pointer", fontFamily: "var(--sans)", fontSize: "13px",
               textAlign: "left", width: "100%", transition: "border-color 0.2s, background 0.2s"
             }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--accent)"; e.currentTarget.style.background = "rgba(99,179,237,0.06)"; }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--accent)"; e.currentTarget.style.background = "rgba(127,29,29,0.05)"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.background = "transparent"; }}>
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: s.color, flexShrink: 0 }} />
               <div style={{ flex: 1 }}>
@@ -346,8 +346,8 @@ async function extractPdfText(file) {
 // ─── LOAD SCREEN ──────────────────────────────────────────────────────────
 function LoadScreen({ fileName, progress, step, logs }) {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem", gap: "1.5rem" }}>
-      <div style={{ fontFamily: "var(--mono)", fontSize: "13px", color: "var(--accent)", letterSpacing: "2px", textTransform: "uppercase" }}>■ Analysing report</div>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem", gap: "1.5rem", position:"relative", zIndex:1 }}>
+      <div style={{ fontFamily: "var(--mono)", fontSize: "11px", color: "var(--accent)", letterSpacing: "0.22em", textTransform: "uppercase", fontWeight:700 }}>Analysing report</div>
       <div style={{ fontFamily: "var(--mono)", fontSize: "11px", color: "var(--text3)" }}>{fileName}</div>
       <div style={{ width: "100%", maxWidth: "400px" }}>
         <div style={{ width: "100%", height: "2px", background: "var(--surface2)", borderRadius: "1px", overflow: "hidden", marginBottom: "8px" }}>
@@ -485,7 +485,7 @@ function SceneCanvas({ SD, layers, camScale, wallH, flAlpha, todIdx, selEv, selR
       SD.escape.forEach((pt,i)=>{ const p=projLocal(pt.x,-0.05,pt.y); i===0?ctx.moveTo(p.sx,p.sy):ctx.lineTo(p.sx,p.sy); }); ctx.stroke(); ctx.setLineDash([]);
       SD.escape.forEach((pt,i)=>{
         const p=projLocal(pt.x,-0.05,pt.y), isAct=i<=aTL;
-        ctx.beginPath(); ctx.arc(p.sx,p.sy,isAct?5.5:3,0,Math.PI*2); ctx.fillStyle=isAct?"#ffd93d":"rgba(255,217,61,0.35)"; ctx.fill();
+        ctx.beginPath(); ctx.arc(p.sx,p.sy,isAct?5.5:3,0,Math.PI*2); ctx.fillStyle=isAct?"#d97706":"rgba(217,119,6,0.3)"; ctx.fill();
         if (isAct && layers.labels) { ctx.fillStyle="#ffd93d"; ctx.font="9px monospace"; ctx.textAlign="center"; ctx.textBaseline="bottom"; ctx.fillText(i===0?"Start":`S${i}`,p.sx,p.sy-9); }
       });
       if (layers.labels && SD.escape.length) {
@@ -608,7 +608,7 @@ function SceneCanvas({ SD, layers, camScale, wallH, flAlpha, todIdx, selEv, selR
   };
 
   return (
-    <canvas ref={canvasRef} style={{ flex: 1, display: "block", cursor: "grab", background: "var(--bg)", minHeight: 0, width: "100%" }}
+    <canvas ref={canvasRef} style={{ flex: 1, display: "block", cursor: "grab", background: "#f0ece4", minHeight: 0, width: "100%" }}
       onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={onMouseUp} onMouseLeave={() => { dragRef.current.isDrag = false; }}
       onWheel={onWheel} />
   );
@@ -724,9 +724,9 @@ export default function App() {
   const st = (meta?.status||"").toLowerCase();
 
   const SbHdr = ({ label, skey }) => (
-    <div onClick={() => toggleSection(skey)} style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"8px 12px", fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", letterSpacing:"1px", textTransform:"uppercase", cursor:"pointer", userSelect:"none" }}
-      onMouseEnter={e=>e.currentTarget.style.color="var(--text2)"} onMouseLeave={e=>e.currentTarget.style.color="var(--text3)"}>
-      <span>{label}</span>
+    <div onClick={() => toggleSection(skey)} style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"8px 12px", fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", letterSpacing:"0.12em", textTransform:"uppercase", cursor:"pointer", userSelect:"none", borderBottom:"1px solid rgba(0,0,0,0.06)" }}
+      onMouseEnter={e=>e.currentTarget.style.color="var(--accent)"} onMouseLeave={e=>e.currentTarget.style.color="var(--text3)"}>
+      <span style={{ fontWeight:700 }}>{label}</span>
       <span style={{ fontSize:"10px", color:"var(--text3)", transition:"transform 0.2s", display:"inline-block", transform: openSections[skey]?"rotate(90deg)":"rotate(0deg)" }}>▶</span>
     </div>
   );
@@ -734,52 +734,109 @@ export default function App() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=Courier+Prime:wght@400;700&display=swap');
         :root {
-          --bg:#060a14;--surface:#0c1220;--surface2:#111827;--border:rgba(99,179,237,0.15);--border2:rgba(99,179,237,0.3);
-          --accent:#63b3ed;--accent2:#4a9eff;--gold:#ffd93d;--red:#ff6b6b;--green:#6bcb77;--purple:#b39ddb;--orange:#ff9f43;
-          --text:#e2e8f0;--text2:#8fa3b8;--text3:#4a6080;--mono:'Share Tech Mono',monospace;--sans:'Rajdhani',sans-serif;
+          --bg:#f7f4ef;--surface:rgba(255,255,255,0.55);--surface2:rgba(255,255,255,0.3);
+          --border:rgba(0,0,0,0.07);--border2:rgba(127,29,29,0.22);
+          --accent:#7f1d1d;--accent2:#991b1b;--gold:#92400e;--red:#dc2626;--green:#15803d;--purple:#6d28d9;--orange:#c2410c;
+          --text:#0f172a;--text2:#475569;--text3:#94a3b8;
+          --mono:'Courier Prime',monospace;--sans:'Inter',sans-serif;--display:'Playfair Display',serif;
+          --shadow:0 20px 60px rgba(0,0,0,0.08);
         }
         *{box-sizing:border-box;margin:0;padding:0;}
         body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;overflow:hidden;}
-        body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.04) 2px,rgba(0,0,0,0.04) 4px);pointer-events:none;z-index:9999;}
+        body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(0,0,0,0.05) 1px,transparent 1px);background-size:26px 26px;opacity:0.5;pointer-events:none;z-index:0;}
+        .bg-gradient{position:fixed;inset:0;background:linear-gradient(135deg,#f7f4ef 0%,#f2eee8 50%,#ebe5dc 100%);z-index:-1;}
+        .glow-orb-1{position:fixed;top:-180px;left:-180px;width:700px;height:700px;border-radius:9999px;background:rgba(255,255,255,0.55);filter:blur(120px);opacity:0.9;animation:pulseGlow 6s ease-in-out infinite;pointer-events:none;z-index:0;}
+        .glow-orb-2{position:fixed;bottom:-200px;right:-200px;width:600px;height:600px;border-radius:9999px;background:rgba(220,38,38,0.1);filter:blur(120px);opacity:0.8;animation:pulseGlow 7s ease-in-out infinite;pointer-events:none;z-index:0;}
+        @keyframes pulseGlow{0%{opacity:0.7}50%{opacity:1}100%{opacity:0.7}}
         input[type=range]{width:100%;height:2px;appearance:none;background:var(--border2);border-radius:1px;outline:none;cursor:pointer;}
         input[type=range]::-webkit-slider-thumb{appearance:none;width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;}
-        ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-thumb{background:var(--border);}
-        .corner-box{border:1px solid var(--border2);border-radius:4px;padding:2rem 2.5rem;position:relative;background:var(--surface);}
-        .corner-box::before,.corner-box::after{content:'';position:absolute;width:12px;height:12px;border-color:var(--accent);border-style:solid;}
-        .corner-box::before{top:-1px;left:-1px;border-width:2px 0 0 2px;}
-        .corner-box::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0;}
+        ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-thumb{background:rgba(127,29,29,0.2);}
+        .corner-box{border:1px solid rgba(255,255,255,0.5);border-radius:18px;padding:2rem 2.5rem;position:relative;background:rgba(255,255,255,0.45);backdrop-filter:blur(22px);box-shadow:var(--shadow);}
+        .corner-box::before,.corner-box::after{content:'';position:absolute;width:14px;height:14px;border-color:var(--accent);border-style:solid;}
+        .corner-box::before{top:-1px;left:-1px;border-width:2px 0 0 2px;border-radius:3px 0 0 0;}
+        .corner-box::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0;border-radius:0 0 3px 0;}
       `}</style>
+      <div className="bg-gradient" />
+      <div className="glow-orb-1" />
+      <div className="glow-orb-2" />
 
       {screen === "upload" && <UploadScreen onLoad={runPipeline} onError={showErr} />}
       {screen === "load"   && <LoadScreen {...loadState} />}
 
       {screen === "app" && SD && (
-        <div style={{ display:"flex", flexDirection:"column", height:"100vh", overflow:"hidden" }}>
+        <div style={{ display:"flex", flexDirection:"column", height:"100vh", overflow:"hidden", position:"relative", zIndex:1 }}>
           {/* Header */}
-          <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"10px 16px", borderBottom:"1px solid var(--border)", background:"var(--surface)", flexShrink:0 }}>
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"10px 20px", borderBottom:"1px solid rgba(0,0,0,0.08)", background:"rgba(255,255,255,0.6)", backdropFilter:"blur(20px)", flexShrink:0 }}>
             <div style={{ display:"flex", alignItems:"center", gap:"12px", flexWrap:"wrap" }}>
-              <span style={{ fontFamily:"var(--mono)", fontSize:"11px", color:"var(--text3)" }}>■</span>
-              <span style={{ fontFamily:"var(--mono)", fontSize:"12px", color:"var(--accent)", letterSpacing:"1px" }}>{meta.caseId} — {meta.incident}</span>
-              <span style={{ fontFamily:"var(--mono)", fontSize:"10px", padding:"3px 8px", borderRadius:"2px", border:"1px solid",
+              <span style={{ fontFamily:"var(--display)", fontSize:"13px", color:"var(--accent)", fontWeight:900, letterSpacing:"0.05em", textTransform:"uppercase" }}>ForensAR</span>
+              <span style={{ width:1, height:16, background:"rgba(0,0,0,0.12)", display:"inline-block" }} />
+              <span style={{ fontFamily:"var(--mono)", fontSize:"11px", color:"var(--text2)", letterSpacing:"0.05em" }}>{meta.caseId} — {meta.incident}</span>
+              <span style={{ fontFamily:"var(--mono)", fontSize:"10px", padding:"3px 10px", borderRadius:"99px", border:"1px solid",
                 color: st.includes("critical")?"var(--red)":st.includes("closed")?"var(--text3)":"var(--green)",
                 borderColor: st.includes("critical")?"var(--red)":st.includes("closed")?"var(--text3)":"var(--green)",
-                background: st.includes("critical")?"rgba(255,107,107,0.08)":st.includes("closed")?"transparent":"rgba(107,203,119,0.08)"
+                background: st.includes("critical")?"rgba(220,38,38,0.08)":st.includes("closed")?"transparent":"rgba(21,128,61,0.08)"
               }}>{meta.status.toUpperCase()}</span>
             </div>
             <div style={{ display:"flex", gap:"8px", alignItems:"center", flexShrink:0 }}>
               <span style={{ fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", maxWidth:240, overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>{meta.location} · {meta.date} · {meta.investigator}</span>
-              <button onClick={newReport} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"5px 12px", border:"1px solid var(--border2)", borderRadius:"2px", background:"transparent", color:"var(--text2)", cursor:"pointer" }}
-                onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--accent)";e.currentTarget.style.color="var(--accent)";}}
-                onMouseLeave={e=>{e.currentTarget.style.borderColor="var(--border2)";e.currentTarget.style.color="var(--text2)";}}>+ New Report</button>
+              <button onClick={newReport} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"6px 14px", border:"1px solid var(--border2)", borderRadius:"99px", background:"transparent", color:"var(--accent)", cursor:"pointer", fontWeight:700, letterSpacing:"0.05em", transition:"all 0.25s" }}
+                onMouseEnter={e=>{e.currentTarget.style.background="var(--accent)";e.currentTarget.style.color="#fff";}}
+                onMouseLeave={e=>{e.currentTarget.style.background="transparent";e.currentTarget.style.color="var(--accent)";}}>+ New Report</button>
             </div>
           </div>
 
           {/* Body */}
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 240px", flex:1, overflow:"hidden", minHeight:0 }}>
+      {/* Body */}
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "260px 1fr 240px",
+    flex: 1,
+    overflow: "hidden",
+    minHeight: 0
+  }}
+>
+
+  {/* LEFT SIDEBAR */}
+  <div
+    style={{
+      background: "#111",
+      color: "#fff",
+      padding: "20px",
+      borderRight: "1px solid rgba(255,255,255,0.08)",
+      overflowY: "auto"
+    }}
+  >
+    <h1
+      style={{
+        fontSize: "40px",
+        marginBottom: "20px"
+      }}
+    >
+      ForensAR
+    </h1>
+
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px"
+      }}
+    >
+      <div>Dashboard</div>
+      <div>Cases</div>
+      <div>Evidence Vault</div>
+      <div>CCTV Analysis</div>
+      <div>Voice Analysis</div>
+      <div>Crime Scene 3D</div>
+      <div>AI Agent</div>
+      <div>Reports</div>
+    </div>
+  </div>
             {/* Canvas area */}
-            <div style={{ display:"flex", flexDirection:"column", borderRight:"1px solid var(--border)", overflow:"hidden", minHeight:0 }}>
+            <div style={{ display:"flex", flexDirection:"column", borderRight:"1px solid rgba(0,0,0,0.07)", overflow:"hidden", minHeight:0 }}>
               <SceneCanvas SD={SD} layers={layers} camScale={camScale} wallH={wallH} flAlpha={flAlpha} todIdx={todIdx}
                 selEv={selEv ? (SD.evidence||[]).find(e=>e.id===selEv) : null} selRoom={selRoom} activeTL={activeTL}
                 autoRot={autoRot} rotX={rotX} rotY={rotY}
@@ -787,35 +844,35 @@ export default function App() {
                 onSelectEv={selectEv} onSelectRoom={selectRoom} onAutoRotChange={onAutoRotChange} />
 
               {/* Toolbar */}
-              <div style={{ display:"flex", alignItems:"center", gap:"6px", flexWrap:"wrap", padding:"8px 12px", borderTop:"1px solid var(--border)", background:"var(--surface)", flexShrink:0 }}>
+              <div style={{ display:"flex", alignItems:"center", gap:"6px", flexWrap:"wrap", padding:"8px 12px", borderTop:"1px solid rgba(0,0,0,0.07)", background:"rgba(255,255,255,0.6)", backdropFilter:"blur(12px)", flexShrink:0 }}>
                 {[
                   { label:"↺ Auto-rotate", active: autoRot, onClick:()=>setAutoRot(v=>!v), id:"ar" },
                 ].map(btn => (
-                  <button key={btn.id} onClick={btn.onClick} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"4px 10px", border:`1px solid ${btn.active?"var(--accent)":"var(--border)"}`, borderRadius:"2px", background:btn.active?"rgba(99,179,237,0.1)":"transparent", color:btn.active?"var(--accent)":"var(--text2)", cursor:"pointer" }}>{btn.label}</button>
+                  <button key={btn.id} onClick={btn.onClick} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"4px 12px", border:`1px solid ${btn.active?"var(--accent)":"rgba(0,0,0,0.12)"}`, borderRadius:"99px", background:btn.active?"rgba(127,29,29,0.08)":"transparent", color:btn.active?"var(--accent)":"var(--text2)", cursor:"pointer", fontWeight:btn.active?700:400 }}>{btn.label}</button>
                 ))}
-                <div style={{ width:1, height:18, background:"var(--border)", flexShrink:0 }} />
+                <div style={{ width:1, height:18, background:"rgba(0,0,0,0.1)", flexShrink:0 }} />
                 {["iso","top","front"].map(v => (
                   <button key={v} onClick={() => {
                     setAutoRot(false);
                     if (v==="top")   { setRotX(89); setRotY(0); }
                     else if (v==="iso")   { setRotX(32); setRotY(30); }
                     else              { setRotX(5);  setRotY(0); }
-                  }} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"4px 10px", border:"1px solid var(--border)", borderRadius:"2px", background:"transparent", color:"var(--text2)", cursor:"pointer", textTransform:"capitalize" }}
-                    onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--accent2)";e.currentTarget.style.color="var(--accent)";}}
-                    onMouseLeave={e=>{e.currentTarget.style.borderColor="var(--border)";e.currentTarget.style.color="var(--text2)";}}>
+                  }} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"4px 12px", border:"1px solid rgba(0,0,0,0.12)", borderRadius:"99px", background:"transparent", color:"var(--text2)", cursor:"pointer", textTransform:"capitalize", transition:"all 0.2s" }}
+                    onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--accent)";e.currentTarget.style.color="var(--accent)";}}
+                    onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(0,0,0,0.12)";e.currentTarget.style.color="var(--text2)";}}>
                     {v.charAt(0).toUpperCase()+v.slice(1)}
                   </button>
                 ))}
-                <div style={{ width:1, height:18, background:"var(--border)", flexShrink:0 }} />
-                <button onClick={() => { setRotX(28); setRotY(0); setCamScale(30); setAutoRot(true); }} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"4px 10px", border:"1px solid var(--border)", borderRadius:"2px", background:"transparent", color:"var(--text2)", cursor:"pointer" }}
-                  onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--accent2)";e.currentTarget.style.color="var(--accent)";}}
-                  onMouseLeave={e=>{e.currentTarget.style.borderColor="var(--border)";e.currentTarget.style.color="var(--text2)";}}>Reset</button>
+                <div style={{ width:1, height:18, background:"rgba(0,0,0,0.1)", flexShrink:0 }} />
+                <button onClick={() => { setRotX(28); setRotY(0); setCamScale(30); setAutoRot(true); }} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"4px 12px", border:"1px solid rgba(0,0,0,0.12)", borderRadius:"99px", background:"transparent", color:"var(--text2)", cursor:"pointer", transition:"all 0.2s" }}
+                  onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--accent)";e.currentTarget.style.color="var(--accent)";}}
+                  onMouseLeave={e=>{e.currentTarget.style.borderColor="rgba(0,0,0,0.12)";e.currentTarget.style.color="var(--text2)";}}>Reset</button>
                 <div style={{ flex:1 }} />
-                <span style={{ fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)" }}>drag · scroll</span>
+                <span style={{ fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", letterSpacing:"0.05em" }}>drag · scroll</span>
               </div>
 
               {/* Info strip */}
-              <div style={{ padding:"8px 12px", borderTop:"1px solid var(--border)", background:"var(--surface)", fontFamily:"var(--mono)", fontSize:"11px", minHeight:"54px", flexShrink:0 }}>
+              <div style={{ padding:"8px 14px", borderTop:"1px solid rgba(0,0,0,0.07)", background:"rgba(255,255,255,0.55)", backdropFilter:"blur(12px)", fontFamily:"var(--mono)", fontSize:"11px", minHeight:"54px", flexShrink:0 }}>
                 {info ? (
                   <>
                     <div style={{ color:"var(--accent)", marginBottom:"4px" }}>{info.title}</div>
@@ -835,20 +892,20 @@ export default function App() {
             </div>
 
             {/* Sidebar */}
-            <div style={{ display:"flex", flexDirection:"column", overflowY:"auto", overflowX:"hidden", background:"var(--surface)", minHeight:0 }}>
+            <div style={{ display:"flex", flexDirection:"column", overflowY:"auto", overflowX:"hidden", background:"rgba(255,255,255,0.45)", backdropFilter:"blur(20px)", minHeight:0 }}>
 
               {/* Layers */}
-              <div style={{ borderBottom:"1px solid var(--border)", flexShrink:0 }}>
+              <div style={{ borderBottom:"1px solid rgba(0,0,0,0.07)", flexShrink:0 }}>
                 <SbHdr label="Layers" skey="layers" />
                 {openSections.layers && (
                   <div style={{ padding:"6px 10px 10px" }}>
                     {Object.entries(INITIAL_LAYERS).map(([k,v]) => (
                       <div key={k} onClick={() => setLayers(l=>({...l,[k]:!l[k]}))} style={{ display:"flex", alignItems:"center", gap:"8px", padding:"5px 4px", borderRadius:"2px", cursor:"pointer" }}
-                        onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.03)"} onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
+                        onMouseEnter={e=>e.currentTarget.style.background="rgba(127,29,29,0.04)"} onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
                         <div style={{ width:10, height:10, borderRadius:"1px", background:v.color, flexShrink:0 }} />
                         <span style={{ flex:1, fontFamily:"var(--mono)", fontSize:"11px", color:"var(--text2)" }}>{v.label}</span>
-                        <div style={{ width:28, height:14, borderRadius:"7px", background:layers[k]?"var(--accent2)":"var(--surface2)", position:"relative", border:`1px solid ${layers[k]?"var(--accent2)":"var(--border)"}`, transition:"background 0.2s", cursor:"pointer", flexShrink:0 }}>
-                          <div style={{ position:"absolute", width:10, height:10, borderRadius:"50%", background:layers[k]?"#fff":"var(--text3)", top:1, left:layers[k]?15:1, transition:"left 0.2s, background 0.2s" }} />
+                        <div style={{ width:28, height:14, borderRadius:"7px", background:layers[k]?"var(--accent)":"rgba(0,0,0,0.12)", position:"relative", border:`1px solid ${layers[k]?"var(--accent)":"rgba(0,0,0,0.12)"}`, transition:"background 0.2s", cursor:"pointer", flexShrink:0 }}>
+                          <div style={{ position:"absolute", width:10, height:10, borderRadius:"50%", background:"#fff", top:1, left:layers[k]?15:1, transition:"left 0.2s" }} />
                         </div>
                       </div>
                     ))}
@@ -857,7 +914,7 @@ export default function App() {
               </div>
 
               {/* Scene Controls */}
-              <div style={{ borderBottom:"1px solid var(--border)", flexShrink:0 }}>
+              <div style={{ borderBottom:"1px solid rgba(0,0,0,0.07)", flexShrink:0 }}>
                 <SbHdr label="Scene Controls" skey="controls" />
                 {openSections.controls && (
                   <div style={{ padding:"6px 10px 10px" }}>
@@ -878,20 +935,20 @@ export default function App() {
                         <span>Time of day</span><span>{TOD[todIdx].label}</span>
                       </div>
                       <input type="range" min="0" max="3" value={todIdx} step="1" onChange={e => setTodIdx(parseInt(e.target.value))} />
-                      <div style={{ fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", padding:"2px 6px", border:"1px solid var(--border)", borderRadius:"2px", display:"inline-block", marginTop:"4px" }}>{TOD[todIdx].desc}</div>
+                      <div style={{ fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", padding:"2px 6px", border:"1px solid rgba(0,0,0,0.07)", borderRadius:"2px", display:"inline-block", marginTop:"4px" }}>{TOD[todIdx].desc}</div>
                     </div>
                   </div>
                 )}
               </div>
 
               {/* Evidence */}
-              <div style={{ borderBottom:"1px solid var(--border)", flexShrink:0 }}>
+              <div style={{ borderBottom:"1px solid rgba(0,0,0,0.07)", flexShrink:0 }}>
                 <SbHdr label="Evidence Log" skey="evidence" />
                 {openSections.evidence && (
                   <div style={{ padding:0 }}>
                     {(SD.evidence||[]).map(ev => (
-                      <div key={ev.id} onClick={() => selectEv(ev.id)} style={{ display:"flex", alignItems:"center", gap:"6px", padding:"5px 10px", borderRadius:"2px", cursor:"pointer", borderBottom:"1px solid var(--border)", background: selEv===ev.id?"rgba(99,179,237,0.07)":"transparent", transition:"background 0.15s" }}
-                        onMouseEnter={e=>e.currentTarget.style.background="rgba(99,179,237,0.07)"} onMouseLeave={e=>e.currentTarget.style.background=selEv===ev.id?"rgba(99,179,237,0.07)":"transparent"}>
+                      <div key={ev.id} onClick={() => selectEv(ev.id)} style={{ display:"flex", alignItems:"center", gap:"6px", padding:"5px 10px", borderRadius:"2px", cursor:"pointer", borderBottom:"1px solid rgba(0,0,0,0.07)", background: selEv===ev.id?"rgba(127,29,29,0.05)":"transparent", transition:"background 0.15s" }}
+                        onMouseEnter={e=>e.currentTarget.style.background="rgba(127,29,29,0.05)"} onMouseLeave={e=>e.currentTarget.style.background=selEv===ev.id?"rgba(127,29,29,0.05)":"transparent"}>
                         <div style={{ width:6, height:6, borderRadius:"50%", background:STATUS_COL[ev.status]||"#aaa", flexShrink:0 }} />
                         <span style={{ fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", minWidth:"46px" }}>{ev.id}</span>
                         <span style={{ flex:1, fontSize:"11px", color:"var(--text2)", overflow:"hidden", textOverflow:"ellipsis", whiteSpace:"nowrap" }}>{ev.desc}</span>
@@ -903,11 +960,11 @@ export default function App() {
               </div>
 
               {/* Timeline */}
-              <div style={{ borderBottom:"1px solid var(--border)", flexShrink:0 }}>
+              <div style={{ borderBottom:"1px solid rgba(0,0,0,0.07)", flexShrink:0 }}>
                 <SbHdr label="Timeline" skey="timeline" />
                 {openSections.timeline && (
                   <div>
-                    <div style={{ display:"flex", alignItems:"center", gap:"8px", padding:"6px 8px 4px", borderBottom:"1px solid var(--border)" }}>
+                    <div style={{ display:"flex", alignItems:"center", gap:"8px", padding:"6px 8px 4px", borderBottom:"1px solid rgba(0,0,0,0.07)" }}>
                       <button onClick={togglePlayback} style={{ fontFamily:"var(--mono)", fontSize:"11px", padding:"3px 10px", border:`1px solid ${isPlaying?"var(--gold)":"var(--border2)"}`, borderRadius:"2px", background:"transparent", color:isPlaying?"var(--gold)":"var(--text2)", cursor:"pointer" }}>
                         {isPlaying ? "⏸ Pause" : "▶ Play"}
                       </button>
@@ -915,9 +972,9 @@ export default function App() {
                       <input type="range" min="1" max="3" value={playSpeed} step="1" style={{ flex:1, margin:"0 4px" }} onChange={e => setPlaySpeed(parseInt(e.target.value))} />
                     </div>
                     {(SD.timeline||[]).map((t,i) => (
-                      <div key={i} id={`tlrow_${i}`} onClick={() => selectTL(i)} style={{ display:"flex", gap:"8px", padding:"5px 10px", borderBottom:"1px solid var(--border)", cursor:"pointer", background:activeTL===i?"rgba(99,179,237,0.07)":"transparent", transition:"background 0.15s" }}
-                        onMouseEnter={e=>e.currentTarget.style.background="rgba(99,179,237,0.07)"} onMouseLeave={e=>e.currentTarget.style.background=activeTL===i?"rgba(99,179,237,0.07)":"transparent"}>
-                        <div style={{ width:16, height:16, borderRadius:"50%", background:"var(--surface2)", border:`1px solid ${activeTL===i?"var(--accent)":"var(--border)"}`, fontFamily:"var(--mono)", fontSize:"9px", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, color:activeTL===i?"var(--accent)":"var(--text3)", marginTop:1 }}>{t.step||i+1}</div>
+                      <div key={i} id={`tlrow_${i}`} onClick={() => selectTL(i)} style={{ display:"flex", gap:"8px", padding:"5px 10px", borderBottom:"1px solid rgba(0,0,0,0.07)", cursor:"pointer", background:activeTL===i?"rgba(127,29,29,0.05)":"transparent", transition:"background 0.15s" }}
+                        onMouseEnter={e=>e.currentTarget.style.background="rgba(127,29,29,0.05)"} onMouseLeave={e=>e.currentTarget.style.background=activeTL===i?"rgba(127,29,29,0.05)":"transparent"}>
+                        <div style={{ width:16, height:16, borderRadius:"50%", background:"rgba(255,255,255,0.4)", border:`1px solid ${activeTL===i?"var(--accent)":"var(--border)"}`, fontFamily:"var(--mono)", fontSize:"9px", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, color:activeTL===i?"var(--accent)":"var(--text3)", marginTop:1 }}>{t.step||i+1}</div>
                         <div>
                           <div style={{ fontFamily:"var(--mono)", fontSize:"9px", color:"var(--text3)" }}>{t.time}</div>
                           <div style={{ fontSize:"11px", color:"var(--text2)", lineHeight:1.4 }}>{t.event}</div>
@@ -929,12 +986,12 @@ export default function App() {
               </div>
 
               {/* Suspects */}
-              <div style={{ borderBottom:"1px solid var(--border)", flexShrink:0 }}>
+              <div style={{ borderBottom:"1px solid rgba(0,0,0,0.07)", flexShrink:0 }}>
                 <SbHdr label="Suspect Info" skey="suspects" />
                 {openSections.suspects && (
                   <div style={{ padding:"6px 10px 10px" }}>
                     {(SD.suspects||[]).length ? (SD.suspects||[]).map((s,i) => (
-                      <div key={i} style={{ padding:"4px 2px", borderBottom:"1px solid var(--border)" }}>
+                      <div key={i} style={{ padding:"4px 2px", borderBottom:"1px solid rgba(0,0,0,0.07)" }}>
                         <div style={{ fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", marginBottom:"3px" }}>
                           Count: <span style={{ color:"var(--accent)" }}>{s.count}</span> · Status: <span style={{ color: s.status==="Unidentified"?"var(--gold)":s.status==="Apprehended"?"var(--green)":"var(--red)" }}>{s.status}</span>
                         </div>
@@ -946,7 +1003,7 @@ export default function App() {
               </div>
 
               {/* Stats */}
-              <div style={{ borderBottom:"1px solid var(--border)", flexShrink:0 }}>
+              <div style={{ borderBottom:"1px solid rgba(0,0,0,0.07)", flexShrink:0 }}>
                 <div style={{ padding:"8px 12px", fontFamily:"var(--mono)", fontSize:"10px", color:"var(--text3)", letterSpacing:"1px", textTransform:"uppercase" }}>Case Stats</div>
                 <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"6px", padding:"8px" }}>
                   {[
@@ -955,7 +1012,7 @@ export default function App() {
                     ["Case type", meta.incidentType||"—"],
                     ["Key fact", meta.keyFact||"—"]
                   ].map(([l,v]) => (
-                    <div key={l} style={{ background:"var(--surface2)", borderRadius:"2px", padding:"8px" }}>
+                    <div key={l} style={{ background:"rgba(255,255,255,0.6)", border:"1px solid rgba(0,0,0,0.07)", borderRadius:"8px", padding:"8px" }}>
                       <div style={{ fontFamily:"var(--mono)", fontSize:"9px", color:"var(--text3)", marginBottom:"3px", textTransform:"uppercase", letterSpacing:"0.5px" }}>{l}</div>
                       <div style={{ fontFamily:"var(--mono)", fontSize: String(v).length>8?"11px":"14px", color:"var(--accent)" }}>{v}</div>
                     </div>
@@ -964,7 +1021,7 @@ export default function App() {
               </div>
 
               {/* Legend */}
-              <div style={{ borderBottom:"1px solid var(--border)", flexShrink:0 }}>
+              <div style={{ borderBottom:"1px solid rgba(0,0,0,0.07)", flexShrink:0 }}>
                 <SbHdr label="Legend" skey="legend" />
                 {openSections.legend && (
                   <div style={{ padding:"6px 10px 10px" }}>
@@ -986,7 +1043,7 @@ export default function App() {
       )}
 
       {errMsg && (
-        <div style={{ position:"fixed", bottom:"12px", left:"50%", transform:"translateX(-50%)", background:"#1a0a0a", border:"1px solid rgba(255,107,107,0.4)", color:"var(--red)", fontFamily:"var(--mono)", fontSize:"11px", padding:"8px 16px", borderRadius:"3px", zIndex:200, whiteSpace:"nowrap" }}>
+        <div style={{ position:"fixed", bottom:"12px", left:"50%", transform:"translateX(-50%)", background:"rgba(255,255,255,0.9)", backdropFilter:"blur(12px)", border:"1px solid rgba(220,38,38,0.3)", color:"var(--red)", fontFamily:"var(--mono)", fontSize:"11px", padding:"8px 18px", borderRadius:"99px", zIndex:200, whiteSpace:"nowrap", boxShadow:"0 8px 24px rgba(0,0,0,0.08)" }}>
           ⚠ {errMsg}
         </div>
       )}

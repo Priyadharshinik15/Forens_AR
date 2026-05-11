@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-
+from routes.report_routes import report_bp
 from config import Config
 from extensions import db, bcrypt, jwt
 
@@ -18,19 +18,19 @@ from routes.upload_routes import upload_bp
 from routes.evidence_routes import evidence_bp
 from routes.dashboard_routes import dashboard_bp
 from routes.chat_routes import chat_bp
-
+# NEW: Import the CCTV blueprint
+from routes.cctv_routes import cctv_bp
+from routes.voice_routes import (
+    voice_bp
+)
 def create_app():
-
     app = Flask(__name__)
-
     app.config.from_object(Config)
-
+    
     CORS(app)
-
+    
     db.init_app(app)
-
     bcrypt.init_app(app)
-
     jwt.init_app(app)
 
     # AUTH
@@ -62,17 +62,31 @@ def create_app():
         dashboard_bp,
         url_prefix="/api/dashboard"
     )
+    
+    # AI CHAT
     app.register_blueprint(
-    chat_bp,
-    url_prefix="/api/ai"
-)
+        chat_bp,
+        url_prefix="/api/ai"
+    )
 
+    # NEW: CCTV ANALYSIS
+    app.register_blueprint(
+        cctv_bp,
+        url_prefix="/api/cctv"
+    )
+    app.register_blueprint(
+    report_bp,
+    url_prefix="/api/ai"
+
+)
+    app.register_blueprint(
+    voice_bp,
+    url_prefix="/api/voice"
+)
     @app.route("/")
     def home():
-
         return {
-            "message":
-            "Forensic Intelligence System API Running"
+            "message": "Forensic Intelligence System API Running"
         }
 
     with app.app_context():
@@ -80,9 +94,7 @@ def create_app():
 
     return app
 
-
 app = create_app()
 
 if __name__ == "__main__":
-
     app.run(debug=True)
