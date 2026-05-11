@@ -17,7 +17,7 @@ function App() {
   return (
     <Routes>
  <Route element={<Layout />}></Route>
-      {/* ROOT → DASHBOARD */}
+      {/* ROOT → DASHBOARD   */}
       <Route path="/" element={<Dashboard />} />
 
       {/* LOGIN */}
