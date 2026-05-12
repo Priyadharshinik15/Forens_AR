@@ -333,11 +333,11 @@ Final Forensic Report
 # 👨‍💻 Developer
 
 Developed by 
-         Priyadharshini K
-         Deepika Devi P
-         G S Shamritha
-         Kasthuri E
-AI • AR/VR • Forensics • Full Stack Development
+        * Priyadharshini K
+        * Deepika Devi P
+        * G S Shamritha
+        * Kasthuri E
+         
 
 ---
 
