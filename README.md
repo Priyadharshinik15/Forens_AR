@@ -2,6 +2,11 @@
 
 ## AI-Powered AR/VR Crime Investigation & Forensic Intelligence Platform
 
+## 🤖 Multi-Agent AI Architecture
+
+Forens_AR integrates a sophisticated multi-agent AI architecture designed for intelligent forensic investigation and evidence analysis. The platform utilizes specialized agents for evidence retrieval, investigation summarization, chronological timeline reconstruction, and automated forensic report generation using advanced RAG pipelines and AI-driven reasoning. These agents collaboratively process CCTV surveillance, voice intelligence, and digital forensic evidence to deliver accurate, real-time investigative insights.
+
+
 <p align="center">
   <img src="https://img.shields.io/badge/AI-Forensics-red?style=for-the-badge">
   <img src="https://img.shields.io/badge/AR%2FVR-Crime%20Investigation-black?style=for-the-badge">
