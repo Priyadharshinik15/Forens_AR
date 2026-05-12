@@ -88,12 +88,29 @@ Uses Hugging Face speech & semantic AI models.
 
 Forens_AR contains 4 specialized AI forensic agents:
 
-| Agent            | Purpose                                      |
-| ---------------- | -------------------------------------------- |
-| 🧠 Autopsy Agent | Evidence reasoning & forensic interpretation |
-| 🎥 CCTV Agent    | Surveillance analysis                        |
-| 🎙 Voice Agent   | Audio intelligence                           |
-| ⚠ Risk Agent     | Threat & risk prediction                     |
+| Agent | Purpose |
+|---|---|
+| 🧠 Evidence Retrieval Agent | Retrieves relevant forensic evidence using RAG pipelines |
+| 📄 Investigation Summary Agent | Generates intelligent investigation summaries |
+| 🕒 Timeline Generation Agent | Builds chronological crime timelines from evidence |
+| 📑 Intelligent Report Agent | Creates final AI-powered forensic reports |
+
+---
+
+# 🧠 AI Agent Workflow
+
+```txt
+Evidence Upload
+      ↓
+Evidence Retrieval Agent
+      ↓
+Investigation Summary Agent
+      ↓
+Timeline Generation Agent
+      ↓
+Intelligent Report Agent
+      ↓
+Final Forensic Investigation Report
 
 ---
 
