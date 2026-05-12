@@ -332,25 +332,16 @@ Final Forensic Report
 
 # 👨‍💻 Developer
 
-Developed by Priyadharshini
-
+Developed by 
+         Priyadharshini K
+         Deepika Devi P
+         G S Shamritha
+         Kasthuri E
 AI • AR/VR • Forensics • Full Stack Development
 
 ---
 
-# 📜 License
 
-MIT License
-
----
-
-# ⭐ Support
-
-If you like this project:
-
-* ⭐ Star the repository
-* 🍴 Fork the project
-* 🛠 Contribute improvements
 
 ---
 
